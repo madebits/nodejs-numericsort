@@ -1,4 +1,5 @@
 var numericsort = function () {
+    "use strict";
 
     var nc = function (s1, s2, zeroesFirst) {
 

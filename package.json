@@ -1,6 +1,6 @@
 {
   "name": "numericsort",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Numeric enabled sort for strings",
   "main": "index.js",
   "scripts": {
