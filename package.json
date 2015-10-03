@@ -1,0 +1,18 @@
+{
+  "name": "numericsort",
+  "version": "0.0.1",
+  "description": "Numeric enabled sort for strings",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./test/index.js"
+  },
+  "author": "madebits <contact@madebits.33mail.com> (https://github.com/madebits/)",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^4.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madebits/nodejs-numericsort.git"
+  }
+}
