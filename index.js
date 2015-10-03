@@ -1,88 +1,88 @@
 var nc = function (s1, s2, zeroesFirst) {
 
-	var sp1 = (typeof s1 === 'undefined');
-	var sp2 = (typeof s2 === 'undefined');
-	if(sp1 && sp2) return 0;
-	else if(sp1) return -1;
-	else if(sp2) return 1;
+    var sp1 = (typeof s1 === 'undefined');
+    var sp2 = (typeof s2 === 'undefined');
+    if (sp1 && sp2) return 0;
+    else if (sp1) return -1;
+    else if (sp2) return 1;
 
-	sp1 = (s1 == null);
-	sp2 = (s2 == null);
-	if(sp1 && sp2) return 0;
-	else if(sp1) return -1;
-	else if(sp2) return 1;
+    sp1 = (s1 == null);
+    sp2 = (s2 == null);
+    if (sp1 && sp2) return 0;
+    else if (sp1) return -1;
+    else if (sp2) return 1;
 
-    if(!isStr(s1)) s1 = s1.toString();
-    if(!isStr(s2)) s2 = s2.toString();
+    if (!isStr(s1)) s1 = s1.toString();
+    if (!isStr(s2)) s2 = s2.toString();
 
-	sp1 = (s1.length <= 0);
-	sp2 = (s2.length <= 0);
-	if(sp1 && sp2) return 0;
-	else if(sp1) return -1;
-	else if(sp2) return 1;
+    sp1 = (s1.length <= 0);
+    sp2 = (s2.length <= 0);
+    if (sp1 && sp2) return 0;
+    else if (sp1) return -1;
+    else if (sp2) return 1;
 
-	sp1 = isLetterOrDigit(s1[0]);
-	sp2 = isLetterOrDigit(s2[0]);
-	if(sp1 && !sp2) return 1;
-	if(!sp1 && sp2) return -1;
+    sp1 = isLetterOrDigit(s1[0]);
+    sp2 = isLetterOrDigit(s2[0]);
+    if (sp1 && !sp2) return 1;
+    if (!sp1 && sp2) return -1;
 
-	var i1 = 0, i2 = 0; // current index
-	var r = 0; // temp result
-	var c1, c2;
-	var letter1, letter2;
+    var i1 = 0, i2 = 0; // current index
+    var r = 0; // temp result
+    var c1, c2;
+    var letter1, letter2;
 
-	while(true) {
-		c1 = s1[i1];
-		c2 = s2[i2];
-		sp1 = isDigit(c1);
-		sp2 = isDigit(c2);
-		if (!sp1 && !sp2) {
-			letter1 = isLetter(c1);
-			letter2 = isLetter(c2);
+    while (true) {
+        c1 = s1[i1];
+        c2 = s2[i2];
+        sp1 = isDigit(c1);
+        sp2 = isDigit(c2);
+        if (!sp1 && !sp2) {
+            letter1 = isLetter(c1);
+            letter2 = isLetter(c2);
 
-			if (letter1 && letter2) {
-				r = compare(c1.toLocaleUpperCase(), c2.toLocaleUpperCase());
-				if (r != 0) return r;
-			}
-			else if (!letter1 && !letter2) {
-				r = c1.localeCompare(c2);
-				if (r != 0) return r;
-			}
-			else if (!letter1 && letter2) {
-				return -1;
-			}
-			else if (letter1 && !letter2) {
-				return 1;
-			}
-		}
-		else if (sp1 && sp2) {
-			var temp = compareNum(s1, i1, s2, i2, zeroesFirst);
+            if (letter1 && letter2) {
+                r = compare(c1.toLocaleUpperCase(), c2.toLocaleUpperCase());
+                if (r != 0) return r;
+            }
+            else if (!letter1 && !letter2) {
+                r = c1.localeCompare(c2);
+                if (r != 0) return r;
+            }
+            else if (!letter1 && letter2) {
+                return -1;
+            }
+            else if (letter1 && !letter2) {
+                return 1;
+            }
+        }
+        else if (sp1 && sp2) {
+            var temp = compareNum(s1, i1, s2, i2, zeroesFirst);
             r = temp.r;
-			if (r != 0) return r;
+            if (r != 0) return r;
             i1 = temp.i1;
             i2 = temp.i2;
         }
-		else if (sp1) {
-			return -1;
-		}
-		else if (sp2) {
-			return 1;
-		}
-		i1++;
-		i2++;
+        else if (sp1) {
+            return -1;
+        }
+        else if (sp2) {
+            return 1;
+        }
+        i1++;
+        i2++;
 
         sp1 = (i1 >= s1.length);
         sp2 = (i2 >= s2.length);
-		if (sp1 && sp2) {
-			return 0;
-		}
-		else if (sp1) {
-			return -1;
-		}
-		else if (sp2) {
-			return 1;
-		}
-	}
+        if (sp1 && sp2) {
+            return 0;
+        }
+        else if (sp1) {
+            return -1;
+        }
+        else if (sp2) {
+            return 1;
+        }
+    }
 };
 
 var compareNum = function(s1, i1, s2, i2, zeroesFirst)
